@@ -18,7 +18,7 @@ logging.basicConfig(
 
 class _URLCacheDB:
     def __init__(self, database_path) -> None:
-        self.connection = sqlite3.connect(database_path + "database.db", check_same_thread=False)
+        self.connection = sqlite3.connect(database_path, check_same_thread=False)
         self.cursor = self.connection.cursor()
         self._ensure_table()
 
