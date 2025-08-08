@@ -2,6 +2,9 @@
 
 A simple Python package for caching the contents of URLs using SQLite. This helps avoid repeated network requests for the same URL.
 
+## PYPI
+https://pypi.org/project/sam-url-cache/
+
 ## Features
 
 - Caches URL responses in a local SQLite database.
