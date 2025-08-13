@@ -8,7 +8,7 @@ with open(readme_path, "r", encoding="utf-8") as readme_file:
 
 setup(
     name='sam_url_cache',
-    version='0.6',
+    version='0.7',
     author='Sam Pomerantz',
     author_email='sam@sampomerantz.me',
     description='A simple URL caching library for Python',

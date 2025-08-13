@@ -35,7 +35,7 @@ class _URLCacheDB:
         try:
             self.cursor.execute(query, (url, last_updated, text))
             self.connection.commit()
-            logger.info(f"Cache Miss. Added: {url}")
+            logger.info(f"Cache Added: {url}")
         except Exception:
             logger.exception(f"Error putting: {url}")
             raise
@@ -45,7 +45,6 @@ class _URLCacheDB:
         try:
             self.cursor.execute(query, (url,))
             result = self.cursor.fetchone()
-            logger.info(f"Cache Hit: {url}")
             if result is None:
                 logger.info(f"Cache Miss: {url}")
                 return None
@@ -54,6 +53,16 @@ class _URLCacheDB:
                 return result[0]
         except Exception:
             logger.exception(f"Error getting: {url}")
+            raise
+
+    def delete(self, url: str) -> None:
+        query = "DELETE FROM cache WHERE URL = ?"
+        try:
+            self.cursor.execute(query, (url,))
+            self.connection.commit()
+            logger.info(f"Deleted: {url}")
+        except Exception:
+            logger.exception(f"Error deleting: {url}")
             raise
 
 if __name__ == "__main__":
