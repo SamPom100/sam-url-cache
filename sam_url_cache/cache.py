@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import os
 from datetime import date
 
 CACHE_DEFINITION = """
@@ -18,6 +19,7 @@ logging.basicConfig(
 
 class _URLCacheDB:
     def __init__(self, database_path) -> None:
+        os.makedirs(os.path.dirname(database_path), exist_ok=True)
         self.connection = sqlite3.connect(database_path, check_same_thread=False)
         self.cursor = self.connection.cursor()
         self._ensure_table()

@@ -33,8 +33,8 @@ BASE_HEADERS = {
 }
 
 class URLCache:
-    def __init__(self, databse_path: str = 'url_cache.db'):
-        self.url_cache_db = _URLCacheDB(databse_path)
+    def __init__(self, database_path: str = 'url_cache.db'):
+        self.url_cache_db = _URLCacheDB(database_path)
 
     def get_url(self, url: str) -> str:
         check = self.url_cache_db.get(url)
